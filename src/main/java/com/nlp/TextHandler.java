@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Фасад, предназначенный для предварительной обработки текста.
- * Выполняет: разделение текста на фразы, отчистку от стоп-слов
- * и символов путктуации, лемматизацию, замену синонимов.
- */
 public class TextHandler {
     private GraphematicParser phraseParser;
     private SynonymReplacer synReplacer;
