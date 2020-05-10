@@ -5,6 +5,7 @@ import java.util.*;
 public class QuoteExtractor {
 
     private int wordsCount;
+    private Set<Character> quoteSymbols;
 
     public QuoteExtractor(Iterable<Character> quoteSymbols, int wordsCount) {
         checkQuoteSymbols(quoteSymbols);

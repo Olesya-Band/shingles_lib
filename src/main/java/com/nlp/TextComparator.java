@@ -2,13 +2,12 @@ package com.nlp;
 
 import com.nlp.shingle.ShingleCalculator;
 import com.nlp.shingle.ShingleComparator;
-import ru.textanalysis.tawt.graphematic.parser.text.GParserImpl;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import ru.textanalysis.tawt.graphematic.parser.text.GParserImpl;
 
 public class TextComparator {
     private static final Set<Character> QUOTE_CHARS = Set.of('\"', '\'');
@@ -55,22 +54,27 @@ public class TextComparator {
 
                     return 0;
                 },
-                MAX_COMPARE_COUNT
+            MAX_COMPARE_COUNT
         );
     }
 
-    public TextCompareResult run(String fTextStr, String sTextStr) {
-        var result = new TextCompareResult();
+
+    public Result compare(String fTextStr, String sTextStr, boolean needShingles)
+    {
+        var result = new Result();
 
         long startAll = System.currentTimeMillis();
 
         var fQuotes = new HashSet<>(quotesExtractor.extract(fTextStr));
 
-        if (fQuotes.isEmpty()) {
+        if (fQuotes.isEmpty())
+        {
             result.fQuotes = new HashSet<>();
             result.fQuoteMidLen = 0;
             result.fQuotePercent = 0;
-        } else {
+        }
+        else
+        {
             result.fQuotes = new HashSet<>(fQuotes);
             result.fQuoteMidLen = fQuotes.stream().mapToInt(s -> s.split(" ").length).sum() / fQuotes.size();
             result.fQuotePercent = (double) fQuotes.stream().mapToInt(String::length).sum() / fTextStr.length() * 100;
@@ -99,10 +103,12 @@ public class TextComparator {
         var fShingles = new ArrayList<byte[]>();
         var sShingles = new ArrayList<byte[]>();
 
-        for (var phrase : fPhrases) {
+        for (var phrase : fPhrases)
+        {
             fShingles.addAll(shingleCalculator.calc(phrase));
         }
-        for (var phrase : sPhrases) {
+        for (var phrase : sPhrases)
+        {
             sShingles.addAll(shingleCalculator.calc(phrase));
         }
 
@@ -110,9 +116,7 @@ public class TextComparator {
         result.sShingles = new ArrayList<>(sShingles);
 
         int count = shingleComparator.compare(fShingles, sShingles);
-        double equalsMeasure = (double) count / Math.min(MAX_COMPARE_COUNT, Math.min(fShingles.size(), sShingles.size())) * 100;
-
-        result.equalsMeasure = equalsMeasure;
+        result.measure = (double) count / Math.min(MAX_COMPARE_COUNT, Math.min(fShingles.size(), sShingles.size())) * 100;
 
         long endAll = System.currentTimeMillis();
 

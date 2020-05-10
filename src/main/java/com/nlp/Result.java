@@ -2,7 +2,10 @@ package com.nlp;
 
 import java.util.*;
 
-public class TextCompareResult {
+public class Result
+{
+    double measure;
+
     Set<String> fQuotes;
     int fQuoteCount;
     int fQuoteMidLen;
@@ -18,10 +21,7 @@ public class TextCompareResult {
     List<byte[]> fShingles;
     List<byte[]> sShingles;
 
-    double equalsMeasure;
     long time;
-
-    TextCompareResult() {}
 
     public Set<String> getfQuotes() {
         return new HashSet<>(fQuotes);
@@ -67,8 +67,8 @@ public class TextCompareResult {
         return new ArrayList<>(sShingles);
     }
 
-    public double getEqualsMeasure() {
-        return equalsMeasure;
+    public double getMeasure() {
+        return measure;
     }
 
     public long getTime() {

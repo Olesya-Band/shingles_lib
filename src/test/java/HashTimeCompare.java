@@ -1,6 +1,7 @@
 import com.nlp.SynonymReplacer;
 import com.nlp.TextHandler;
 import com.nlp.shingle.ShingleCalculator;
+import java.nio.file.Path;
 import org.junit.Before;
 import org.junit.Test;
 import ru.textanalysis.tawt.graphematic.parser.text.GParserImpl;
@@ -13,9 +14,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class HashTimeCompare {
-    private static final String TEXT_PATH = "src/com.nlp.test/resources/text17.txt";
+    private static final String TEXT_PATH = "src/test/resources/text17.txt";
 
-    private static final String SYNONYMS_PATH = "src/main/resources/ru_synonyms.txt";
+    private static final String SYNONYMS_PATH = "ru_synonyms.txt";
     private static final String SYNONYMS_SEPARATOR = ";";
 
     private static final int SHINGLE_LENGTH = 3;

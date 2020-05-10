@@ -9,7 +9,7 @@ public class SynonymReplacer {
     public SynonymReplacer(String filePath, String separator) {
         synonyms = new HashMap<>();
 
-        try (var in = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(filePath)))) {
+        try (var in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filePath)))) {
             String line;
 
             while ((line = in.readLine()) != null) {

@@ -1,9 +1,8 @@
 package com.nlp;
 
-import ru.textanalysis.tawt.sp.api.SyntaxParser;
-
 import java.util.ArrayList;
 import java.util.List;
+import ru.textanalysis.tawt.sp.api.SyntaxParser;
 
 public enum Lemmatizer {
     INSTANCE;
