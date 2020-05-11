@@ -16,7 +16,7 @@ import java.util.List;
 public class HashTimeCompare {
     private static final String TEXT_PATH = "src/test/resources/text17.txt";
 
-    private static final String SYNONYMS_PATH = "ru_synonyms.txt";
+    private static final String SYNONYMS_PATH = "/ru_synonyms.txt";
     private static final String SYNONYMS_SEPARATOR = ";";
 
     private static final int SHINGLE_LENGTH = 3;
