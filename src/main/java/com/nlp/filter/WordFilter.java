@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Множество, предназначенное для фильтрации стоп-слов.
+ */
 public enum WordFilter implements Filter {
     INSTANCE;
 
@@ -17,10 +20,18 @@ public enum WordFilter implements Filter {
         sdk = JMorfSdkFactory.loadFullLibrary();
     }
 
+    /**
+     * Метод, который принимает массив слов и возвращает очищенный список слов.
+     * @see Filter
+     */
     public List<String> clean(String[] words) {
         return clean(Arrays.asList(words));
     }
 
+    /**
+     * Метод, который принимает коллекцию слов и возвращает очищенный список слов.
+     * @see Filter
+     */
     public List<String> clean(Iterable<String> words) {
         var res = new ArrayList<String>();
 
@@ -33,6 +44,10 @@ public enum WordFilter implements Filter {
         return res;
     }
 
+    /**
+     * Метод, который принимает текст и возвращает очищенные слова разделенные пробелом.
+     * @see Filter
+     */
     public String clean(String text) {
         return String.join(" ", clean(text.split(" ")));
     }

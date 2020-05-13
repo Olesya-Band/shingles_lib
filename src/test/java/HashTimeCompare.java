@@ -13,6 +13,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+/**
+ * Класс для измерения времени работы алгоритмов хеширования.
+ */
 public class HashTimeCompare {
     private static final String TEXT_PATH = "src/test/resources/text17.txt";
 
@@ -27,6 +30,7 @@ public class HashTimeCompare {
     private ShingleCalculator<byte[]> md5Calc;
     private ShingleCalculator<byte[]> sha1Calc;
     private ShingleCalculator<byte[]> sha256Calc;
+
 
     @Before
     public void initTextPhrases() throws IOException {
@@ -89,6 +93,7 @@ public class HashTimeCompare {
         );
     }
 
+    
     @Test
     public void timeCompare() {
         long start;

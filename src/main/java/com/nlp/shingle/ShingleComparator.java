@@ -2,11 +2,20 @@ package com.nlp.shingle;
 
 import java.util.*;
 
+/**
+ * Класс, предназначенный для подсчета количества одинаковых шинглов в двух последовательностях.
+ * @param <T> - тип шингла.
+ */
 public class ShingleComparator<T> {
     private Comparator<T> comparator;
 
     private int count;
 
+    /**
+     * Конструктор, принимает на вход @comparator и @count
+     * @param comparator алгоритм сравнения двух шинглов
+     * @param count минимальное количество шинглов
+     */
     public ShingleComparator(Comparator<T> comparator, int count) {
         checkCount(count);
 
@@ -20,10 +29,19 @@ public class ShingleComparator<T> {
         }
     }
 
+    /**
+     * Метод, который возвращает минимальное количество шинглов.
+     */
     public int getCount() {
         return count;
     }
 
+    /**
+     * Метод выполнет подсчет кол-ва одинаковых шинглов в двух последовательностях.
+     * @param first - первая последовательность шинглов.
+     * @param second - вторая последовательность шинглов.
+     * @return - кол-во одинаковых шинглов.
+     */
     public int compare(List<T> first, List<T> second) {
         int count = Math.min(this.count, Math.min(first.size(), second.size()));
 

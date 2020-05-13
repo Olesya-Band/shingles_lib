@@ -9,6 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 import ru.textanalysis.tawt.graphematic.parser.text.GParserImpl;
 
+/**
+ * Класс, содержит всю основную логику, которая используется  для обработки и сравнения текстов.
+ */
 public class TextComparator {
     private static final Set<Character> QUOTE_CHARS = Set.of('\"', '\'');
     private static final int QUOTE_LENGTH = 2;
@@ -26,6 +29,9 @@ public class TextComparator {
     private ShingleCalculator<byte[]> shingleCalculator;
     private ShingleComparator<byte[]> shingleComparator;
 
+    /**
+     * Конструктор, который инициирует зависимости TextComparator.
+     */
     public TextComparator() {
         this.quotesExtractor = new QuoteExtractor(QUOTE_CHARS, QUOTE_LENGTH);
         this.textHandler = new TextHandler(
@@ -59,6 +65,12 @@ public class TextComparator {
     }
 
 
+    /**
+     * Конструктор, принимает на вход первый и второй текст.
+     * @param fTextStr первый текст
+     * @param sTextStr второй текст
+     * @return result
+     */
     public Result compare(String fTextStr, String sTextStr, boolean needShingles)
     {
         var result = new Result();

@@ -3,15 +3,27 @@ package com.nlp.shingle;
 import java.util.*;
 import java.util.function.Function;
 
+/**
+ * Класс, предназначенный для подсчета шинглов от слов текста.
+ * @param <T> - тип шингла.
+ */
 public class ShingleCalculator<T> {
     private int length;
 
     private Function<String, T> hashFunc;
 
+    /**
+     * Конструктор, принимает на вход функцию для вычисления шингла.
+     * Количество слов в последовательности от которой считается шингл = 1.
+     */
     public ShingleCalculator(Function<String, T> hashFunc) {
         this(1, hashFunc);
     }
 
+    /**
+     * Конструктор, принимает на вход количество слов в последовательности
+     * от которой считается шингл и функцию для вычисления шингла.
+     */
     public ShingleCalculator(int length, Function<String, T> hashFunc) {
         checkLength(length);
         Objects.requireNonNull(hashFunc, "hashFunc");
@@ -26,18 +38,36 @@ public class ShingleCalculator<T> {
         }
     }
 
+    /**
+     * Метод, который возвращает количество слов в шингле.
+     */
     public int getLength() {
         return length;
     }
 
+    /**
+     * Метод, выполняет вычисление шинглов от переданного текста.
+     * @param text - текст.
+     * @return - список шинглов.
+     */
     public List<T> calc(String text) {
         return calc(text.split(" "));
     }
 
+    /**
+     * Метод, выполняет вычисление шинглов от переданного массива слов текста.
+     * @param words - список слов текста.
+     * @return - список шинглов.
+     */
     public List<T> calc(String[] words) {
         return calc(Arrays.asList(words));
     }
 
+    /**
+     * Метод, выполняет вычисление шинглов от переданного массива слов текста.
+     * @param words - список слов текста.
+     * @return - список шинглов.
+     */
     public List<T> calc(List<String> words) {
         if (words.size() <= length) {
             return Collections.singletonList(hashFunc.apply(String.join(" ", words)));

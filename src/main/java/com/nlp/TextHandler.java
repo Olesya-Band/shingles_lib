@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Фасад, предназначенный для предварительной обработки текста.
+ * Выполняет: разделение текста на фразы, отчистку от стоп-слов
+ * и символов пунктуации, лемматизацию, замену синонимов.
+ */
 public class TextHandler {
     private GraphematicParser phraseParser;
     private SynonymReplacer synReplacer;
@@ -19,6 +24,11 @@ public class TextHandler {
         this.synReplacer = synReplacer;
     }
 
+    /**
+     * Метод, разбивает текст на отдельные фразы.
+     * @param text текст
+     * @return phrases отдельные фразы
+     */
     public List<List<String>> apply(String text) {
         text = text.trim()
                 .toLowerCase()

@@ -2,11 +2,17 @@ package com.nlp;
 
 import java.util.*;
 
+/**
+ * Класс, предназначенный для извлечения цитат из текста.
+ */
 public class QuoteExtractor {
 
     private int wordsCount;
     private Set<Character> quoteSymbols;
 
+    /**
+     * Конструктор, принимает на вход @quoteSymbols и @wordsCount.
+     */
     public QuoteExtractor(Iterable<Character> quoteSymbols, int wordsCount) {
         checkQuoteSymbols(quoteSymbols);
         checkCount(wordsCount);
@@ -28,14 +34,23 @@ public class QuoteExtractor {
         }
     }
 
+    /**
+     * Метод, который возвращает признаки цитат (кавычные символы)
+     */
     public Set<Character> getQuoteSymbols() {
         return new HashSet<>(quoteSymbols);
     }
 
+    /**
+     * Метод, который возвращает минимальное количество слов в цитате.
+     */
     public int getWordsCount() {
         return wordsCount;
     }
 
+    /**
+     * Метод, извлекает все цитаты из текста, которые разделены символами из @quoteSymbols
+     */
     public Set<String> extract(String text) {
         return extract(getQuotesIndexes(text), text);
     }
