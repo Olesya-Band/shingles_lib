@@ -61,6 +61,7 @@ public enum WordFilter implements Filter {
                 case MorfologyParameters.TypeOfSpeech.NOUNPRONOUN:
                 case MorfologyParameters.TypeOfSpeech.PRETEXT:
                 case MorfologyParameters.TypeOfSpeech.UNION:
+                case MorfologyParameters.TypeOfSpeech.PARTICLE:
                     return true;
             }
         }
