@@ -66,7 +66,7 @@ public class TextComparator {
 
 
     /**
-     * Конструктор, принимает на вход первый и второй текст.
+     * Метод, который сравнивает тексты.
      * @param fTextStr первый текст
      * @param sTextStr второй текст
      * @return result
