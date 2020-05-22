@@ -13,8 +13,9 @@ import java.util.Objects;
  * и символов пунктуации, лемматизацию, замену синонимов.
  */
 public class TextHandler {
-    private GraphematicParser phraseParser;
-    private SynonymReplacer synReplacer;
+    private final GraphematicParser phraseParser;
+    private final SynonymReplacer synReplacer;
+    private final WordFilter wordFilter;
 
     public TextHandler(GraphematicParser phraseParser, SynonymReplacer synReplacer) {
         Objects.requireNonNull(phraseParser, "phraseParser");
@@ -22,10 +23,12 @@ public class TextHandler {
 
         this.phraseParser = phraseParser;
         this.synReplacer = synReplacer;
+        this.wordFilter = WordFilter.INSTANCE;
     }
 
     /**
      * Метод, разбивает текст на отдельные фразы.
+     *
      * @param text текст
      * @return phrases отдельные фразы
      */
